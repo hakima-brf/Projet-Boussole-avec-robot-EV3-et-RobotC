@@ -1,10 +1,10 @@
 /* 
-Un  peu  de  programmation  multitâche.  On fixe  le  gyromètre  à la  brique  EV3.  
-On écrit une tâche qui observe à 10 Hz la vitesse de rotation et garde en mémoire le min et le max. 
-On écrit une deuxième tâche qui stocke dans un fichier la vitesse observée toutes les minutes. 
-Enfin on écrit une troisième tâche qui observe le capteur de contact pour interrompre le programme
-lorsqu’on appuie dessus. 
-Le min et le max devront être sauvegardés à la fin du fichier des vitesses observées avant de quitter le programme.
+Un  peu  de  programmation  multitÃ¢che.  On fixe  le  gyromÃ¨tre  Ã  la  brique  EV3.  
+On Ã©crit une tÃ¢che qui observe Ã  10 Hz la vitesse de rotation et garde en mÃ©moire le min et le max. 
+On Ã©crit une deuxiÃ¨me tÃ¢che qui stocke dans un fichier la vitesse observÃ©e toutes les minutes. 
+Enfin on Ã©crit une troisiÃ¨me tÃ¢che qui observe le capteur de contact pour interrompre le programme
+lorsquâ€™on appuie dessus. 
+Le min et le max devront Ãªtre sauvegardÃ©s Ã  la fin du fichier des vitesses observÃ©es avant de quitter le programme.
 
 */
 int min, max, val;
@@ -12,7 +12,7 @@ string s_min,s_max,s_val;
 long fileHandle;
 TSemaphore mutexMinMax;
 
-// tache watch qui va observer le gyrometre at va garde en mémoire le min et le max.
+// tache watch qui va observer le gyrometre at va garde en mÃ©moire le min et le max.
 task watch(){
 while(1){
 	val=getGyroRate(S2);
@@ -36,7 +36,7 @@ task write(){
 	delay(60000);
 }
 }
-//tache qui  observe le capteur de contact pour interromprele programme lorsqu’on appuie dessus.
+//tache qui  observe le capteur de contact pour interromprele programme lorsquâ€™on appuie dessus.
 task halt(){
 	while(getTouchValue(S1)==0){}
 	stopTask(write);
