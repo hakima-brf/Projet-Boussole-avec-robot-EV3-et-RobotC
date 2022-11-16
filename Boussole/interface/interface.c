@@ -32,7 +32,7 @@ task IHM1(){
 	displayTextLine(3, "           ");
 }}
 
-// robot fixe avec consigne à préciser
+// robot fixe avec consigne Ã  prÃ©ciser
 
 void launchMotor(int s){
 	if(abs(s)>880){
@@ -120,7 +120,7 @@ while(getButtonPress(buttonLeft)==1){}
 
 
 
-// rebot mobile à consigne fixe =0
+// rebot mobile Ã  consigne fixe =0
 void launchMotorSpeed2(int s){
 	if(abs(s)>500){
 		setMotorSpeed(motorA, 500/11.11);
@@ -193,12 +193,12 @@ void initialize(){
 		a=False;
 		setMotorSpeed(motorA,0);
 	}
-	//tourner le moteur de 20° vers la droite quend on appui sur le boutton droit
+	//tourner le moteur de 20Â° vers la droite quend on appui sur le boutton droit
     if(getButtonPress(buttonRight)==1){
   		setMotorSpeed(motorA,20);
 	 	while(getButtonPress(buttonRight)==1){}
   	}
-  	//tourner le moteur de 20° vers la droite quend on appui sur le boutton droit
+  	//tourner le moteur de 20Â° vers la droite quend on appui sur le boutton droit
     if(getButtonPress(buttonLeft)==1){
   		setMotorSpeed(motorA,-20);
      while(getButtonPress(buttonLeft)==1){}
