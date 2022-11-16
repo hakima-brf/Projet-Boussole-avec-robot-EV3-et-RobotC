@@ -28,9 +28,9 @@ if(getButtonPress(buttonEnter)==1) stopAllTasks();
 
 task keepheadingPD2(){
 	while(1){
-	vitesseAngulaire=getGyroRate(S3)*6; //la vitesse de rotation delivres par le gyromètre
+	vitesseAngulaire=getGyroRate(S3)*6; //la vitesse de rotation delivres par le gyromÃ¨tre
 	cap =getGyroDegrees(S3) ; // le cap 
- speed = p*(consigne-cap)+vitesseAngulaire*d; //regle de régulation
+ speed = p*(consigne-cap)+vitesseAngulaire*d; //regle de rÃ©gulation
 	if (fabs(consigne-cap)>1){ //si la consigne est diffrente du cap actuel on lance le moteur 
 		launchMotorSpeed2(speed);
 	}
