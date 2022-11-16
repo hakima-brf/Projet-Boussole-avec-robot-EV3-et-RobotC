@@ -1,7 +1,7 @@
-TSemaphore mutexCons; //on initialise une semaphore car la consigne une variable utilisée en écriture par
+TSemaphore mutexCons; //on initialise une semaphore car la consigne une variable utilisÃ©e en Ã©criture par
 // watchButtons() et en lecture parkeepHeading().
-float consigne =0 ; // on initialise la consigne à 0
-int cap=0; //  le cap atteint par le moteur on l'initialise mnt à 0
+float consigne =0 ; // on initialise la consigne Ã  0
+int cap=0; //  le cap atteint par le moteur on l'initialise mnt Ã  0
 
 
 // tache qui scrute les boutons de la brique pour faire le  suivi  de  consigne
@@ -9,16 +9,16 @@ task watchbuttons(){
 	while(1){
 if(getButtonPress(buttonEnter)==1) stopAllTasks(); //on arrete le programme sur appui du bouton centrale
 
-  //si on appuit sur le bouton droit on ajoute 10 à la consigne afin que le moteur tourne de 10° vers la droite
+  //si on appuit sur le bouton droit on ajoute 10 Ã  la consigne afin que le moteur tourne de 10Â° vers la droite
   if(getButtonPress(buttonRight)==1){
-  	//on utilise la semaphore à chaque acces à la consigne car c'est une ressource partagée
+  	//on utilise la semaphore Ã  chaque acces Ã  la consigne car c'est une ressource partagÃ©e
   	semaphoreLock(mutexCons);
 	  consigne+=10;
   	semaphoreUnlock(mutexCons);
 	while(getButtonPress(buttonRight)==1){}
   	}
   	
-  //si on appuit sur le bouton gauche on ajoute -10° à la consigne afin que le moteur tourne de 10° vers la gauche
+  //si on appuit sur le bouton gauche on ajoute -10Â° Ã  la consigne afin que le moteur tourne de 10Â° vers la gauche
   if(getButtonPress(buttonLeft)==1){
   	semaphoreLock(mutexCons);
 	  consigne-=10;
@@ -26,7 +26,7 @@ if(getButtonPress(buttonEnter)==1) stopAllTasks(); //on arrete le programme sur 
     while(getButtonPress(buttonLeft)==1){}
   	}
   	
-  //si on appuit sur le bouton haut on ajoute 90° à la consigne afin que le moteur tourne de 90° vers la droite
+  //si on appuit sur le bouton haut on ajoute 90Â° Ã  la consigne afin que le moteur tourne de 90Â° vers la droite
   if(getButtonPress(buttonUp)==1){
   	semaphoreLock(mutexCons);
 	  consigne+=90;
@@ -34,7 +34,7 @@ if(getButtonPress(buttonEnter)==1) stopAllTasks(); //on arrete le programme sur 
 	   while(getButtonPress(buttonUp)==1){}
   	}
   	
-  //si on appuit sur le bouton bas on ajoute -90° à la consigne afin que le moteur tourne de 90° vers la gauche
+  //si on appuit sur le bouton bas on ajoute -90Â° Ã  la consigne afin que le moteur tourne de 90Â° vers la gauche
  if(getButtonPress(buttonDown)==1){
   	semaphoreLock(mutexCons);
 	  consigne-=90;
@@ -46,19 +46,19 @@ if(getButtonPress(buttonEnter)==1) stopAllTasks(); //on arrete le programme sur 
 
 // tache qui effectue en boucle le changement de consigne
 task keepheading(){
-	bool consignechanged = false; //on initialise un variable pour determiner quand la consigne a changé
+	bool consignechanged = false; //on initialise un variable pour determiner quand la consigne a changÃ©
 	float consigne2;  //consigne2 va prendre la valeur de consigne
 
 	while(1){
  semaphoreLock(mutexCons);
- //si la consigne mémorisé dans consigne2 est diffrente de la consigne actuelle on met a jour la consigne 
+ //si la consigne mÃ©morisÃ© dans consigne2 est diffrente de la consigne actuelle on met a jour la consigne 
  	if(consigne2 != consigne){
 		consigne2 = consigne;
 		consignechanged = true;
 	}else{
 	consignechanged = false;
 	}
-	//si la consigne a changé on envoie la commande au moteur
+	//si la consigne a changÃ© on envoie la commande au moteur
 	if (consignechanged && fabs(consigne2-getMotorEncoder(motorA))>1) 	setMotorTarget(motorA,consigne2,20);
 		semaphoreUnlock(mutexCons);
 
@@ -67,7 +67,7 @@ task keepheading(){
 }
 
 /*
-tache qui explique à l'utilisateur à quoi servent les boutons et qui affiche la consigne ainsi que le cap 
+tache qui explique Ã  l'utilisateur Ã  quoi servent les boutons et qui affiche la consigne ainsi que le cap 
 atteint par le moteur.
 */
 task IHM(){
