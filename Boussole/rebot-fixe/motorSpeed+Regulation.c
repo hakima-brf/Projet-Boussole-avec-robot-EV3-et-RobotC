@@ -8,11 +8,11 @@ on fixe les valeures de la vitesse maximale et la pente de la droite passant par
 
 
 void launchMotorSpeed(int speed){
-	//si la vitesse donnée est supérieure à la vitesse maximale on tourne le moteur à la vitesse maximale prédefinie
+	//si la vitesse donnÃ©e est supÃ©rieure Ã  la vitesse maximale on tourne le moteur Ã  la vitesse maximale prÃ©definie
 	if (abs(speed)>MAXSPEED){
 		setMotorSpeed(motorD, MAXSPEED/PENTE);
 	}else
-	    // si la vitesse donnée est inférieur à la vitesse maximale on tourne le moteur à la vitesse donnée
+	    // si la vitesse donnÃ©e est infÃ©rieur Ã  la vitesse maximale on tourne le moteur Ã  la vitesse donnÃ©e
 		setMotorSpeed(motorD, speed/PENTE);
 		delay(500);
 }
@@ -21,7 +21,7 @@ void launchMotorSpeed(int speed){
 
 
 
-//Régulation
+//RÃ©gulation
 
 TSemaphore mutexCons;
 int consigne =0 ;
